@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+# Shared components
+gem "fog-core", :github => "fog/fog-core"
+gem "fog-json", :github => "fog/fog-json"
+
+gemspec :path => "../"
