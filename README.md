@@ -49,7 +49,7 @@ You can install the latest stable version using:
 
 Connecting to 1&amp;1 can be done by creating a compute connection with the provider.
 
-```
+```ruby
 require 'fog-oneandone'
 
 compute = Fog::Compute::OneAndOne.new({
@@ -59,7 +59,7 @@ compute = Fog::Compute::OneAndOne.new({
 
 Credentials can be specified as shown above or placed in a `.fog` file located in the home directory.
 
-```
+```bash
 $ less ~/.fog
 default:
   oneandone_api_key: <API-TOKEN>
@@ -79,7 +79,7 @@ data center with a fixed hardware configuration.
 The server can take time to provision. The `wait_for` server object method will wait until the server state is available before continuing, and returns a hash containing the method's execution duration. This is useful when chaining together requests that are dependent upon one another.
 
 A server "model" will be returned to the `my_server` variable.  You can use this model to access the server's attributes and perform further operations.
-```
+```ruby
 compute = Fog::Compute::OneAndOne.new({
   :oneandone_api_key => '<API-TOKEN>'
 })
@@ -96,7 +96,7 @@ puts my_server.wait_for { ready? }
 If you would prefer to set your own custom hardware configuration, then simply replace `fixed_instance_id` with values for
 `vcore`, `ram`, `cores_per_processor`, and `hdds`, like so:
 
-```
+```ruby
 hdd1 = {
   'is_main' => true,
   'size' => 60
@@ -116,7 +116,7 @@ my_server = compute.servers.create(name: 'My Server',
 
 Using our `my_server` model from above, we can easily update the server's hardware configuration, like so:
 
-```
+```ruby
 my_server.update_hardware(vcore: 2, ram: 4)
 my_server.wait_for { ready? }
 
@@ -129,7 +129,7 @@ puts my_server.hardware['ram']
 
 Need extra storage?  Adding an additional HDD is easy:
 
-```
+```ruby
 hdd2 = {
  'is_main' => false,
  'size' => 80
@@ -146,7 +146,7 @@ puts my_server.hardware['hdds']
 
 Ready to downsize?  Deleting storage is easy too:
 
-```
+```ruby
 hdd2_id = my_server.hardware['hdds'][1]['id']
 
 my_server.delete_hdd(hdd_id: hdd2_id)
@@ -161,7 +161,7 @@ puts my_server.hardware['hdds']
 
 When you are finished with your server, use the `destroy` method to permanently delete the resource from the provider.  The `destroy` method is available on all models.
 
-```
+```ruby
 puts my_server.destroy
 >> true
 ```
@@ -171,7 +171,7 @@ puts my_server.destroy
 
 A high level interface to each cloud is provided through collections, such as `images` and `servers`. You can see a list of available collections by calling `collections` on the connection object.
 
-```
+```ruby
 compute = Fog::Compute::OneAndOne.new({
   :oneandone_api_key => '<API-TOKEN>'
 })
@@ -191,7 +191,7 @@ vpns
 
 Each collection comes equipped with the `create`, `all`, and `get` methods.  You've seen how the `create` method works in our server example above.  `all` will fetch every object of that type from the provider, and generate a model for each of those objects.  Here's an example:
 
-```
+```ruby
 servers = compute.servers.all
 first_server = servers[0]
 
@@ -207,7 +207,7 @@ puts first_server.destroy
 
 `get` will fetch a single object from the provider and generate a model for the specified object.
 
-```
+```ruby
 bad_server = compute.servers.get('<BAD-SERVER-ID>')
 
 puts bad_server.destroy
@@ -219,7 +219,7 @@ puts bad_server.destroy
 
 As you might imagine, testing code using Fog can be slow and expensive, constantly turning on and shutting down instances. Mocking allows skipping this overhead by providing an in memory representation of resources as you make requests. Enabling mocking is easy to use: before you run other commands, simply run:
 
-```
+```ruby
 Fog.mock!
 ```
 
@@ -233,7 +233,7 @@ This simple app creates a load balancer, firewall policy, and server. It then ad
 
 The source code for the Example App can be found <a href='examples/example_app.rb'>here</a>.
 
-```
+```ruby
 require 'fog-oneandone'
 
 compute = Fog::Compute::OneAndOne.new({
