@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tjb1019/fog.svg?branch=master)](https://travis-ci.org/tjb1019/fog)
 
-Fog is an open-source, community Ruby library used for interacting with popular cloud infrastructure providers through a single, unified API.
+Fog is an open-source, community Ruby library used for interacting with popular cloud infrastructure providers through a single, unified API. For more information on the Fog plug-in see the [1&1 Community Portal](https://www.1and1.com/cloud-community/).
 
 This guide will show you how to programmatically use the 1&amp;1 provider in Fog to perform common management tasks available in the 1&amp;1 Cloud Panel.
 
