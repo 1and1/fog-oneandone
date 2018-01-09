@@ -5,14 +5,14 @@ module Fog
       class Real
 
         ##
-        # Creates a new blocked storage
+        # Creates a new block storage
         # URL: [https://cloudpanel-api.1and1.com/documentation/v1/en/api/documentation.html#block_storages_post]
         ##
-        def create_blocked_storage(name: nil, description: nil,
+        def create_block_storage(name: nil, description: nil,
           size: nil, datacenter_id: nil, server_id: nil)
 
           # Build POST body
-          new_blocked_storage = {
+          new_block_storage = {
             'name' => name,
             'description' => description,
             'size' => size,
@@ -21,7 +21,7 @@ module Fog
           }
 
           # Clean out null values from POST body
-          body = clean_hash(new_blocked_storage)
+          body = clean_hash(new_block_storage)
 
           # Stringify the POST body
           string_body = Fog::JSON.encode(body)
@@ -29,7 +29,7 @@ module Fog
           # Request
           params = {
             'method' => :post,
-            'endpoint' => '/blocked_storages',
+            'endpoint' => '/block_storages',
             'body' => string_body
           }
 
@@ -42,11 +42,11 @@ module Fog
       
       class Mock
 
-        def create_blocked_storage(name: nil, description: nil,
+        def create_block_storage(name: nil, description: nil,
           size: nil, datacenter_id: nil, server_id: nil)
           
-          # Create mock blocked storage hash
-          mock_blocked_storage = {
+          # Create mock block storage hash
+          mock_block_storage = {
             "id" => Fog::UUID.uuid,
             "size" => size,
             "state" => "ACTIVE",
@@ -61,8 +61,8 @@ module Fog
             "server" => server_id
           }
 
-          # Save mock blocked storage to list
-          self.data[:blocked_storages] << mock_blocked_storage
+          # Save mock block storage to list
+          self.data[:block_storages] << mock_block_storage
 
           # Return mock response to user
           response = Excon::Response.new

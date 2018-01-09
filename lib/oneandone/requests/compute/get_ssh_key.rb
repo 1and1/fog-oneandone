@@ -5,14 +5,14 @@ module Fog
       class Real
 
         ##
-        # Returns information about a block storage
-        # URL: [https://cloudpanel-api.1and1.com/documentation/v1/en/api/documentation.html#block_storages__block_storage_id__get]
+        # Returns information about a ssh key
+        # URL: [https://cloudpanel-api.1and1.com/documentation/v1/en/api/documentation.html#ssh_keys__ssh_key_id__get]
         ##
-        def get_block_storage(block_storage_id)
+        def get_ssh_key(ssh_key_id)
           
           params = {
             'method' => :get,
-            'endpoint' => "/block_storages/#{block_storage_id}"
+            'endpoint' => "/ssh_keys/#{ssh_key_id}"
           }
 
           request(params)
@@ -24,11 +24,11 @@ module Fog
       
       class Mock
 
-        def get_block_storage(block_storage_id)
+        def get_ssh_key(ssh_key_id)
           
-          # Search for block storage to return
-          if block_storage = self.data[:block_storages].find {
-            |hash| hash['id'] == block_storage_id
+          # Search for ssh key to return
+          if ssh_key = self.data[:ssh_keys].find {
+            |hash| hash['id'] == ssh_key_id
           }
           else
             raise Fog::Errors::NotFound.new('The requested resource could
@@ -38,7 +38,7 @@ module Fog
           # Return Response Object to User
           response = Excon::Response.new
           response.status = 202
-          response.body = block_storage
+          response.body = ssh_key
           response
 
         end

@@ -41,6 +41,9 @@ module Fog
       model :block_storage
       collection :block_storages
 
+      model :ssh_key
+      collection :ssh_keys
+
       # Requests
       request_path 'oneandone/requests/compute'
 
@@ -241,6 +244,13 @@ module Fog
       request :add_block_storage_server
       request :remove_block_storage_server
 
+
+      request :list_ssh_keys
+      request :create_ssh_key
+      request :get_ssh_key
+      request :update_ssh_key
+      request :delete_ssh_key
+
       class Real
         
         def initialize(options = {})
@@ -310,6 +320,8 @@ module Fog
               :private_networks  => [],
               :monitoring_policies  => [],
               :vpns => [],
+              :ssh_keys => [],
+              :block_storages => [],
               :datacenters => [
                 {
                   "id" => "81DEF28500FBC2A973FC0C620DF5B721",

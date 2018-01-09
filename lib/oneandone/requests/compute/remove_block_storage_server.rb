@@ -5,14 +5,14 @@ module Fog
       class Real
 
         ##
-        # Removes a server from a blocked storage
+        # Removes a server from a block storage
         # URL: [https://cloudpanel-api.1and1.com/documentation/v1/en/api/documentation.html#]
         ##
-        def remove_blocked_storage_server(blocked_storage_id: nil)
+        def remove_block_storage_server(block_storage_id: nil)
           
           params = {
             'method' => :delete,
-            'endpoint' => "/blocked_storages/#{blocked_storage_id}/server"
+            'endpoint' => "/block_storages/#{block_storage_id}/server"
           }
 
           request(params)
@@ -24,11 +24,11 @@ module Fog
       
       class Mock
 
-        def remove_blocked_storage_server(blocked_storage_id: nil)
+        def remove_block_storage_server(block_storage_id: nil)
           
-          # Search for blocked storage
-          if blocked_storage = self.data[:blocked_storages].find {
-            |hash| hash['id'] == blocked_storage_id
+          # Search for block storage
+          if block_storage = self.data[:block_storages].find {
+            |hash| hash['id'] == block_storage_id
           }
           else
             raise Fog::Errors::NotFound.new('The requested resource could
@@ -38,7 +38,7 @@ module Fog
           # Return Response Object to User
           response = Excon::Response.new
           response.status = 202
-          response.body = blocked_storage
+          response.body = block_storage
           response
 
         end

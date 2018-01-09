@@ -5,10 +5,10 @@ module Fog
       class Real
 
         ##
-        # Returns a list of all block storages on your account
-        # URL: [https://cloudpanel-api.1and1.com/documentation/v1/en/api/documentation.html#block_storages_get]
+        # Returns a list of all ssh keys on your account
+        # URL: [https://cloudpanel-api.1and1.com/documentation/v1/en/api/documentation.html#ssh_keys_get]
         ##
-        def list_block_storages(page: nil, per_page: nil, sort: nil, q: nil,
+        def list_ssh_keys(page: nil, per_page: nil, sort: nil, q: nil,
           fields: nil)
           
           # Build hash for query parameters
@@ -26,7 +26,7 @@ module Fog
           # Request
           params = {
             'method' => :get,
-            'endpoint' => '/block_storages',
+            'endpoint' => '/ssh_keys',
             'params' => query
           }
 
@@ -39,12 +39,12 @@ module Fog
       
       class Mock
 
-        def list_block_storages(page: nil, per_page: nil, sort: nil, q: nil,
+        def list_ssh_keys(page: nil, per_page: nil, sort: nil, q: nil,
           fields: nil)
           
           response = Excon::Response.new
           response.status = 200
-          response.body = self.data[:block_storages]
+          response.body = self.data[:ssh_keys]
           response
 
         end
