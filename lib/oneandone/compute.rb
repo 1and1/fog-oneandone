@@ -38,6 +38,9 @@ module Fog
       model :vpn
       collection :vpns
 
+      model :block_storage
+      collection :block_storages
+
       # Requests
       request_path 'oneandone/requests/compute'
 
@@ -226,6 +229,17 @@ module Fog
 
       request :list_datacenters
       request :get_datacenter
+
+
+      request :list_block_storages
+      request :create_block_storage
+      request :get_block_storage
+      request :update_block_storage
+      request :delete_block_storage
+
+      request :get_block_storage_server
+      request :add_block_storage_server
+      request :remove_block_storage_server
 
       class Real
         
