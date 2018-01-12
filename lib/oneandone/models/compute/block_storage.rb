@@ -90,7 +90,7 @@ module Fog
 
         def ready?
 
-          state == 'ACTIVE'
+          state == 'POWERED_ON'
 
         end
 

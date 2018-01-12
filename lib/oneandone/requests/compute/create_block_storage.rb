@@ -67,7 +67,7 @@ module Fog
           # Return mock response to user
           response = Excon::Response.new
           response.status = 202
-          response.body = mock_blocked_storage
+          response.body = mock_block_storage
             
           response
 

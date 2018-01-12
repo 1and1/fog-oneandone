@@ -51,8 +51,8 @@ module Fog
             "state" => "ACTIVE",
             "servers" => [],
             "md5" => "5df9f63916ebf8528697b629022993e8",
-            "public_key": public_key,
-            "creation_date" => "2018-01-06T08:33:25+00:00"
+            "creation_date" => "2018-01-06T08:33:25+00:00",
+            "public_key" => public_key
           }
 
           # Save mock ssh key to list

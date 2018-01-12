@@ -39,7 +39,7 @@ module Fog
           # Return Response Object to User
           response = Excon::Response.new
           response.status = 202
-          response.body = 'The requested ssh key has been deleted.'
+          response.body = []
           response
 
         end
