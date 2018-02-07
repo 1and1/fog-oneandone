@@ -37,6 +37,7 @@ module Fog
         attribute :alerts
         attribute :monitoring_policy
         attribute :private_networks
+        attribute :public_key
 
         
         def save
@@ -55,7 +56,7 @@ module Fog
             appliance_id: appliance_id, hdds: hdds, datacenter_id: datacenter_id,
             password: password, power_on: power_on, firewall_id: firewall_id,
             ip_id: ip_id, load_balancer_id: load_balancer_id,
-            monitoring_policy_id: monitoring_policy_id)
+            monitoring_policy_id: monitoring_policy_id, public_key: public_key)
 
           # Merge Attributes
           merge_attributes(response.body)
