@@ -187,6 +187,8 @@ public_ips
 private_networks
 monitoring_policies
 vpns
+block_storages
+ssh_keys
 ```
 
 Each collection comes equipped with the `create`, `all`, and `get` methods.  You've seen how the `create` method works in our server example above.  `all` will fetch every object of that type from the provider, and generate a model for each of those objects.  Here's an example:

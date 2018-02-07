@@ -16,6 +16,10 @@ module Fog
         attribute :frequency
         attribute :num_images
         attribute :creation_date
+        attribute :source
+        attribute :url
+        attribute :os_id
+        attribute :type
         
         
         def save
@@ -24,7 +28,8 @@ module Fog
 
           # Perform Request
           response = service.create_image(name: name, description: description,
-            server_id: server_id, frequency: frequency, num_images: num_images)
+            server_id: server_id, frequency: frequency, num_images: num_images,
+            source: source, url: url, os_id: os_id, type: type)
 
           # Merge Attributes
           merge_attributes(response.body)

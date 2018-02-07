@@ -9,7 +9,8 @@ module Fog
         # URL: [https://cloudpanel-api.1and1.com/documentation/1and1/v1/en/documentation.html#images_post]
         ##
         def create_image(server_id: nil, name: nil, description: nil,
-          frequency: nil, num_images: nil)
+          frequency: nil, num_images: nil, source: nil, url: nil,
+          os_id: nil, type: nil)
 
           # Build POST body
           new_image = {
@@ -17,7 +18,11 @@ module Fog
             'name' => name,
             'description' => description,
             'frequency' => frequency,
-            'num_images' => num_images
+            'num_images' => num_images,
+            'source' => source,
+            'url' => url,
+            'os_id' => os_id,
+            'type' => type
           }
 
           # Clean out null values from POST body
@@ -43,7 +48,8 @@ module Fog
       class Mock
 
         def create_image(server_id: nil, name: nil, description: nil,
-          frequency: nil, num_images: nil)
+          frequency: nil, num_images: nil, source: nil, url: nil,
+          os_id: nil, type: nil)
           
           # Create mock image hash
           mock_image = {
