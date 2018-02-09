@@ -19,4 +19,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "fog-core"
   spec.add_runtime_dependency "fog-json"
   spec.add_development_dependency "minitest"
+  spec.add_development_dependency "pry", "~> 0.10"
 end
