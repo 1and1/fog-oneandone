@@ -14,7 +14,8 @@ module Fog
         attribute :assigned_to
         attribute :state
         attribute :creation_date
-        
+        attribute :is_dhcp
+
         
         def save
 

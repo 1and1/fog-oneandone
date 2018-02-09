@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fog-oneandone"
-  spec.version       = "1.0"
+  spec.version       = "1.1"
   spec.authors       = ["Tyler Burkhardt (stackpointcloud.com)"]
   spec.email         = "tyler@stackpointcloud.com"
   spec.summary       = "Module for the 'fog' gem to support 1and1."
@@ -19,4 +19,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "fog-core"
   spec.add_runtime_dependency "fog-json"
   spec.add_development_dependency "minitest"
+  spec.add_development_dependency "pry", "~> 0.10"
 end

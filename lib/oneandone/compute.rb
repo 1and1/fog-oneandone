@@ -44,6 +44,15 @@ module Fog
       model :ssh_key
       collection :ssh_keys
 
+      model :baremetal_model
+      collection :baremetal_models
+
+      model :server_appliance
+      collection :server_appliances
+
+      model :recovery_appliance
+      collection :recovery_appliances
+
       # Requests
       request_path 'oneandone/requests/compute'
 
@@ -100,13 +109,11 @@ module Fog
 
       request :clone_server
 
-
       request :list_images
       request :create_image
       request :get_image
       request :update_image
       request :delete_image
-
 
       request :list_shared_storages
       request :create_shared_storage
@@ -121,7 +128,6 @@ module Fog
 
       request :access
       request :change_password
-
 
       request :list_firewalls
       request :get_firewall
@@ -139,7 +145,6 @@ module Fog
       request :add_firewall_rules
       request :delete_firewall_rule
 
-
       request :list_load_balancers
       request :create_load_balancer
       request :get_load_balancer
@@ -156,13 +161,11 @@ module Fog
       request :get_load_balancer_rule
       request :delete_load_balancer_rule
 
-
       request :list_public_ips
       request :create_public_ip
       request :get_public_ip
       request :update_public_ip
       request :delete_public_ip
-
 
       request :list_private_networks
       request :create_private_network
@@ -175,10 +178,8 @@ module Fog
       request :remove_private_network_server
       request :add_private_network_servers
 
-
       request :list_monitored_servers
       request :get_monitored_server
-
 
       request :list_monitoring_policies
       request :get_monitoring_policy
@@ -203,21 +204,16 @@ module Fog
       request :remove_mp_server
       request :add_mp_servers
 
-
       request :list_logs
       request :get_log
 
-
       request :list_usages
-
 
       request :list_server_appliances
       request :get_server_appliance
 
-
       request :list_dvds
       request :get_dvd_iso
-
 
       request :list_vpns
       request :create_vpn
@@ -225,14 +221,11 @@ module Fog
       request :update_vpn
       request :delete_vpn
 
-
       request :ping
       request :ping_auth
 
-
       request :list_datacenters
       request :get_datacenter
-
 
       request :list_block_storages
       request :create_block_storage
@@ -244,12 +237,17 @@ module Fog
       request :add_block_storage_server
       request :remove_block_storage_server
 
-
       request :list_ssh_keys
       request :create_ssh_key
       request :get_ssh_key
       request :update_ssh_key
       request :delete_ssh_key
+
+      request :list_baremetal_models
+      request :get_baremetal_model
+
+      request :list_recovery_appliances
+      request :get_recovery_appliance
 
       class Real
         
@@ -322,6 +320,42 @@ module Fog
               :vpns => [],
               :ssh_keys => [],
               :block_storages => [],
+              :baremetal_models  => [
+                {
+                  "name" => "baremetal_1_name",
+                  "id" => "8C626C1A7005D0D1F527143C413D461E",
+                  "hardware" => {
+                    "cores" => 1,
+                    "cores_per_processor" => 4,
+                    "ram" => 16,
+                    "unit" => "GB",
+                    "hdds" => [
+                      {
+                        "size" => 480,
+                        "unit" => "GB",
+                        "is_main" => true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name" => "baremetal_2_name",
+                  "id" => "8C626C1A7005D0D1F5271434563D461A",
+                  "hardware" => {
+                    "cores" => 1,
+                    "cores_per_processor" => 4,
+                    "ram" => 64,
+                    "unit" => "GB",
+                    "hdds" => [
+                      {
+                        "size" => 800,
+                        "unit" => "GB",
+                        "is_main" => true
+                      }
+                    ]
+                  }
+                }
+              ],
               :datacenters => [
                 {
                   "id" => "81DEF28500FBC2A973FC0C620DF5B721",
@@ -704,6 +738,34 @@ module Fog
                   "os_version" => "Windows2008R2",
                   "os_architecture" => 64,
                   "type" => "OS"
+                }
+              ],
+              :recovery_appliances => [
+                {
+                  "id" => "81504C620D98BCEBAA5202D145203B4B",
+                  "name" => "Recovery image name",
+                  "available_datacenters" => [
+                    "DA41201B4A006EDE6DA62A5A62A658E7",
+                    "47FA5A2D251AE57935E30F9D5AB4F817",
+                    "7C5FA1D21B98DE39D7516333AAB7DA54"
+                  ],
+                  "os_family" => "Linux",
+                  "os" => "CentOS",
+                  "os_version" => "CentOS 7",
+                  "architecture" => 64
+                },
+                {
+                  "id" => "81504C620D98BCEB5646987545203B42",
+                  "name" => "Recovery image name",
+                  "available_datacenters" => [
+                    "DA41201B4A006EDE6DA62A5A62A658E7",
+                    "47FA5A2D251AE57935E30F9D5AB4F817",
+                    "7C5FA1D21B98DE39D7516333AAB7DA54"
+                  ],
+                  "os_family" => "Windows",
+                  "os" => "Windows",
+                  "os_version" => "Windows 2012",
+                  "architecture" => 64
                 }
               ]
             }
