@@ -60,21 +60,6 @@ module Fog
         end
 
 
-        def remove_ip(options = {})
-
-          requires :id
-
-          response = service.remove_firewall_ip(firewall_id: id,
-            ip_id: options[:ip_id])
-
-          # Merge Attributes
-          merge_attributes(response.body)
-
-          true
-
-        end
-
-
         def add_rules(options = {})
 
           requires :id

@@ -137,7 +137,6 @@ module Fog
 
       request :list_firewall_ips
       request :get_firewall_ip
-      request :remove_firewall_ip
       request :add_firewall_ips
 
       request :list_firewall_rules

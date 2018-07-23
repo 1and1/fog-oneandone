@@ -24,13 +24,19 @@ puts my_server.wait_for { ready? }
 # Create Firewall
 puts "----------"
 rule1 = {
-  'protocol' => 'TCP',
-  'port_from' => 80,
-  'port_to' => 80,
-  'source' => '0.0.0.0'
+    'description' => 'Testing firewall improvements fog',
+    'protocol' => 'TCP',
+    'port' => '90',
+    'source' => '0.0.0.0'
+}
+rule2 = {
+    'protocol' => 'TCP',
+    'port_from' => 80,
+    'port_to' => 80,
+    'source' => '0.0.0.0'
 }
 
-rules = [rule1]
+rules = [rule1, rule2]
 
 my_firewall = compute.firewalls.create(name: 'Example App Firewall',
   rules: rules)
