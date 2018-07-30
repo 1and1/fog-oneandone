@@ -16,7 +16,7 @@ module Fog
           }
 
           # Stringify the POST body
-          string_body = Fog::JSON.encode(body)
+          string_body = Fog::JSON.encode(new_ports)
 
           # Request
           params = {
