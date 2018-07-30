@@ -110,18 +110,7 @@ class TestFirewall < Minitest::Test
 
   end
 
-  def test_h_remove_firewall_ip
-
-    # Perform Request
-    response = @compute.remove_firewall_ip(firewall_id: @@firewall_id,
-      ip_id: '<IP-ID>')
-
-    # Assertions
-    assert_equal response.body['server_ips'].length, 0
-
-  end
-
-  def test_i_add_firewall_rules
+  def test_h_add_firewall_rules
 
     # Perform Request
     rule2 = {
@@ -143,7 +132,7 @@ class TestFirewall < Minitest::Test
 
   end
 
-  def test_j_list_firewall_rules
+  def test_i_list_firewall_rules
 
     # Perform Request
     response = @compute.list_firewall_rules(@@firewall_id)
@@ -153,7 +142,7 @@ class TestFirewall < Minitest::Test
 
   end
 
-  def test_k_get_firewall_rule
+  def test_j_get_firewall_rule
 
     # Perform Request
     response = @compute.get_firewall_rule(firewall_id: @@firewall_id,
@@ -164,7 +153,7 @@ class TestFirewall < Minitest::Test
 
   end
 
-  def test_l_delete_firewall_rule
+  def test_k_delete_firewall_rule
 
     # Perform Request
     response = @compute.delete_firewall_rule(firewall_id: @@firewall_id,
@@ -175,7 +164,7 @@ class TestFirewall < Minitest::Test
 
   end
 
-  def test_m_delete_firewall
+  def test_l_delete_firewall
 
     # Perform Request
     response = @compute.delete_firewall(@@firewall_id)
